@@ -28,16 +28,18 @@ export const SquadsSelector = ({ squads }: SquadsSelectorProps) => {
   };
 
   return (
-    <div className="mb-4 flex flex-row gap-2 divide-x divide-slate-700">
-      {squads.map(({ id, name }) => (
-        <Checkbox
-          key={id}
-          id={`${id}`}
-          label={name}
-          checked={selectedSquads.some((el) => el === id)}
-          onChange={handleSquadClicked}
-        />
-      ))}
-    </div>
+    <>
+      <div className="mb-4 grid w-full grid-cols-1 justify-items-start sm:grid-cols-2 md:grid-cols-4 md:justify-items-center">
+        {squads.map(({ id, name }) => (
+          <Checkbox
+            key={id}
+            id={`${id}`}
+            label={name}
+            checked={selectedSquads.some((el) => el === id)}
+            onChange={handleSquadClicked}
+          />
+        ))}
+      </div>
+    </>
   );
 };

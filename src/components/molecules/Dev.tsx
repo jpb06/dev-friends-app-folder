@@ -16,13 +16,13 @@ export const Dev = ({ id, idSquad, firstName, avatar }: DevType) => {
       whileTap={{ scale: 0.98 }}
       onClick={handleDevSelected}
     >
-      <div className="relative h-[100px] w-[170px]">
+      <div className="relative h-[100px] ">
         <Image
           src={avatar}
           alt={firstName}
           fill
-          className="rounded-t-xl"
-          sizes="(max-width: &70px) 100vw"
+          className="rounded-t-xl object-cover"
+          sizes="(max-width: &100px) 100vw"
         />
       </div>
       <div className="my-3">
