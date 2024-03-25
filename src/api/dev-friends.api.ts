@@ -1,7 +1,7 @@
 import { fetchWrapper } from './logic/fetch-wrapper.logic';
 import { Dev, Squad } from './types/dev-friends-api.types';
 
-const allSquads = async () => fetchWrapper<Squad[]>('squads?delayMs=1000');
+const allSquads = async () => fetchWrapper<Squad[]>('squads?delayMs=2000');
 
 const allDevs = async () => fetchWrapper<Dev[]>('devs?delayMs=1000');
 
