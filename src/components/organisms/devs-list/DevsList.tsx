@@ -14,7 +14,7 @@ export const DevsList = async ({ searchParams }: DevsListProps) => {
   const selectedSquads = getSelectedSquadsFrom(searchParams);
   const devs = await DevFriendsApi.devsBySquads(selectedSquads);
 
-  if (!devs.length) {
+  if (!devs?.length) {
     return (
       <div className="flex flex-col items-center rounded-xl p-4">
         <FaceFrownIcon className="h-20 w-20 text-slate-500" />
