@@ -28,7 +28,7 @@ export const SquadsSelector = ({ squads }: SquadsSelectorProps) => {
   };
 
   return (
-    <div className="mb-4 flex flex-row gap-2">
+    <div className="mb-4 flex flex-row gap-2 divide-x divide-slate-700">
       {squads.map(({ id, name }) => (
         <Checkbox
           key={id}

@@ -1,5 +1,5 @@
-"use client";
+'use client';
 
-import { Error } from "../components/molecules/Error";
+import { ErrorPage } from '../components/molecules/error-page/ErrorPage';
 
-export default Error;
+export default ErrorPage;
