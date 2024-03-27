@@ -24,7 +24,7 @@ export const Checkbox = ({ id, label, checked, onChange }: CheckboxProps) => {
       <label className="label cursor-pointer gap-2">
         <motion.input
           type="checkbox"
-          className="checkbox-accent checkbox h-10 w-10 hover:shadow-[inset_0_-5px_20px_rgba(255,0,255,0.6)]"
+          className="checkbox-accent checkbox h-10 w-10"
           checked={checked}
           onChange={handleChange}
           whileHover={{ scale: 1.12 }}

@@ -18,7 +18,16 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@api": ["./src/api"],
+      "@logic": ["./src/logic"],
+      "@atoms": ["./src/components/atoms"],
+      "@client/atoms": ["./src/components/client/atoms"],
+      "@client/molecules": ["./src/components/client/molecules"],
+      "@client/organisms": ["./src/components/client/organisms"],
+      "@client/templates": ["./src/components/client/templates"],
+      "@server/organisms": ["./src/components/server/organisms"],
+      "@types": ["./src/types"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

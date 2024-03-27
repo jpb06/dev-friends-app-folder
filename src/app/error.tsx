@@ -1,5 +1,5 @@
 'use client';
 
-import { ErrorPage } from '../components/molecules/error-page/ErrorPage';
+import { ErrorReport } from '@client/templates';
 
-export default ErrorPage;
+export default ErrorReport;
