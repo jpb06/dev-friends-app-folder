@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
-import type { Dev as DevType } from '../../api/types/dev-friends-api.types';
+import type { Dev as DevType } from '@api';
 
 export const Dev = ({ id, idSquad, firstName, avatar }: DevType) => {
   const handleDevSelected = () => {};
@@ -11,7 +11,7 @@ export const Dev = ({ id, idSquad, firstName, avatar }: DevType) => {
   return (
     <motion.div
       key={id}
-      className="rounded-xl bg-base-200 hover:shadow-[inset_0_-20px_40px_rgba(50,0,50,0.5)]"
+      className="rounded-lg bg-base-200 hover:shadow-[inset_0_-20px_40px_rgba(50,0,50,0.5)]"
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.98 }}
       onClick={handleDevSelected}
@@ -21,7 +21,7 @@ export const Dev = ({ id, idSquad, firstName, avatar }: DevType) => {
           src={avatar}
           alt={firstName}
           fill
-          className="rounded-t-xl object-cover"
+          className="rounded-t-lg object-cover"
           sizes="(max-width: &100px) 100vw"
         />
       </div>

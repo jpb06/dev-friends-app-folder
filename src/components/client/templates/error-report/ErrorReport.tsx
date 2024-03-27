@@ -4,12 +4,12 @@ import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 
 import { useErrorMessage } from './hooks/useErrorMessage';
 
-type ErrorProps = {
+type ErrorReportProps = {
   error: Error & { digest?: string };
   reset: () => void;
 };
 
-export const ErrorPage = ({ error, reset }: ErrorProps) => {
+export const ErrorReport = ({ error, reset }: ErrorReportProps) => {
   const errorMessage = useErrorMessage(error);
 
   return (

@@ -1,4 +1,4 @@
-import { SearchParams } from '../../../../types/search-params.type';
+import { SearchParams } from '../../../../../types/search-params.type';
 
 export const getSelectedSquadsFrom = (searchParams: SearchParams) => {
   const squadsParams = (searchParams['squads'] ?? '') as string;

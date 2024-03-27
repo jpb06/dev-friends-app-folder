@@ -1,3 +1,8 @@
+const pathAliases = {
+  pattern: '{@api,@logic,@atoms,@client/**,@server/**,@types}',
+  regex: '^@(api|@logic|@atoms|client/|server/|types)',
+};
+
 /** @type {import('eslint').Linter.Config} */
 module.exports = {
   root: true,
@@ -46,8 +51,15 @@ module.exports = {
           'error',
           {
             alphabetize: { caseInsensitive: true, order: 'asc' },
-            groups: ['builtin', 'external', 'parent', 'sibling'],
+            groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
             'newlines-between': 'always',
+            pathGroups: [
+              {
+                pattern: pathAliases.pattern,
+                group: 'internal',
+                position: 'before',
+              },
+            ],
             pathGroupsExcludedImportTypes: ['builtin'],
           },
         ],
@@ -55,6 +67,7 @@ module.exports = {
           'warn',
           { validStrategies: ['ternary'] },
         ],
+        'react/self-closing-comp': 'error',
         '@typescript-eslint/consistent-type-exports': 'error',
         '@typescript-eslint/consistent-type-imports': 'error',
         '@typescript-eslint/no-unused-vars': [
@@ -107,6 +120,7 @@ module.exports = {
       ],
       parser: '@typescript-eslint/parser',
       settings: {
+        'import/internal-regex': pathAliases.regex,
         'import/resolver': {
           node: {
             extensions: ['.ts', '.tsx'],
@@ -121,8 +135,15 @@ module.exports = {
           'error',
           {
             alphabetize: { caseInsensitive: true, order: 'asc' },
-            groups: ['builtin', 'external', 'parent', 'sibling'],
+            groups: ['builtin', 'external', 'internal', 'parent', 'sibling'],
             'newlines-between': 'always',
+            pathGroups: [
+              {
+                pattern: pathAliases.pattern,
+                group: 'internal',
+                position: 'before',
+              },
+            ],
             pathGroupsExcludedImportTypes: ['builtin'],
           },
         ],
