@@ -2,10 +2,16 @@ import { DevFriendsApi } from '@api';
 import { DevCard, DevsListPaging } from '@client/molecules';
 import { searchParamsCache } from '@logic';
 
+import { NoData } from './atoms/NoData';
+
 export const DevsList = async () => {
   const { page, squads } = searchParamsCache.all();
 
   const query = await DevFriendsApi.devsBySquads(squads, page);
+
+  if (query.total === 0) {
+    return <NoData />;
+  }
 
   return (
     <>
