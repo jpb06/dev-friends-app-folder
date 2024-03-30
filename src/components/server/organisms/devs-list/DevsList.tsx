@@ -1,27 +1,26 @@
 import { DevFriendsApi } from '@api';
-import { Dev } from '@client/molecules';
-import type { SearchParams } from '@types';
+import { DevCard, DevsListPaging } from '@client/molecules';
+import { searchParamsCache } from '@logic';
 
 import { NoData } from './atoms/NoData';
-import { getSelectedSquadsFrom } from './logic/get-selected-squads-from-search-params.logic';
 
-type DevsListProps = {
-  searchParams: SearchParams;
-};
+export const DevsList = async () => {
+  const { page, squads } = searchParamsCache.all();
 
-export const DevsList = async ({ searchParams }: DevsListProps) => {
-  const selectedSquads = getSelectedSquadsFrom(searchParams);
-  const devs = await DevFriendsApi.devsBySquads(selectedSquads);
+  const query = await DevFriendsApi.devsBySquads(squads, page);
 
-  if (!devs?.length) {
+  if (query.total === 0) {
     return <NoData />;
   }
 
   return (
-    <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-3 md:grid-cols-4">
-      {devs.map((dev) => (
-        <Dev key={dev.id} {...dev} />
-      ))}
-    </div>
+    <>
+      <DevsListPaging {...query} />
+      <div className="grid w-full grid-cols-1 gap-2 sm:grid-cols-3 md:grid-cols-4">
+        {query.data.map((dev) => (
+          <DevCard key={dev.id} {...dev} />
+        ))}
+      </div>
+    </>
   );
 };

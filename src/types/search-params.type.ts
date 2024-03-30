@@ -1,4 +1,1 @@
-export type SearchParams = Record<
-  string,
-  string | string[] | string[][] | undefined
->;
+export type SearchParams = Record<string, string | string[] | undefined>;
