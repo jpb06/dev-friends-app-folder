@@ -1,25 +1,34 @@
-import { fetchWrapper } from './logic/fetch-wrapper.logic';
+import { apiFetch, apiPaginatedFetch } from './logic/fetch-wrapper.logic';
 import { Dev, Squad } from './types/dev-friends-api.types';
+import { Pagination } from './types/pagination.type';
 
-const allSquads = async () => fetchWrapper<Squad[]>('squads?delayMs=2000');
+const allSquads = async () => apiFetch<Squad[]>('squads?delayMs=2000');
 
-const allDevs = async () => fetchWrapper<Dev[]>('devs?delayMs=1000');
+const allDevs = async () => apiPaginatedFetch<Dev[]>('devs?delayMs=1000');
 
 const squadDevs = async (squadId: string) =>
-  fetchWrapper<Dev[]>(`squads/${squadId}/devs?delayMs=1000`);
+  apiPaginatedFetch<Dev[]>(`squads/${squadId}/devs?delayMs=1000`);
 
-const devsBySquads = async (squadsIds: number[]) => {
+const devsBySquads = async (squadsIds: number[], page = 1) => {
   if (squadsIds.length === 0) {
-    return Promise.resolve([]);
+    return Promise.resolve({
+      data: [] as Dev[],
+      page: undefined as Pagination,
+      total: 0,
+    });
   }
 
-  return fetchWrapper<Dev[]>('devs/by-squads?delayMs=1000', 'POST', {
-    idSquads: squadsIds,
-  });
+  return apiPaginatedFetch<Dev[]>(
+    `devs/by-squads?delayMs=1000&page=${page}`,
+    'POST',
+    {
+      idSquads: squadsIds,
+    },
+  );
 };
 
 const changeDevSquad = async (squadId: string, devId: string) =>
-  fetchWrapper<string>('devs/change-squad?delayMs=1000', 'POST', {
+  apiFetch<string>('devs/change-squad?delayMs=1000', 'POST', {
     idSquad: squadId,
     idDev: devId,
   });

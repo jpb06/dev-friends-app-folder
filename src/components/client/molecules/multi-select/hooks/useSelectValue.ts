@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { sortByLabel } from '@logic';
 
@@ -10,9 +10,7 @@ export const useSelectValue = (
   onSelectedValuesChanged: (values: MultiSelectValue[]) => void,
 ) => {
   const [currentValue, setCurrentValue] = useState<string | undefined>();
-  const [selectedValues, setSelectedValues] = useState<MultiSelectValue[]>(
-    initialSelectedValues,
-  );
+  const [selectedValues, setSelectedValues] = useState<MultiSelectValue[]>([]);
 
   const handleCurrentValueChanged = (
     e: React.ChangeEvent<HTMLSelectElement>,
@@ -27,27 +25,30 @@ export const useSelectValue = (
     if (currentValue && !valueAlreadyAdded) {
       const value = values.find(({ id }) => id === currentValue);
       if (value) {
-        setSelectedValues((prev) => {
-          const newValues = sortByLabel([...prev, value]);
-          onSelectedValuesChanged(newValues);
-          return newValues;
-        });
+        setSelectedValues((prev) => sortByLabel([...prev, value]));
       }
     }
   };
 
   const handleValueRemoved = (id: string) => () => {
-    setSelectedValues((prev) => {
-      const newValues = prev.filter((team) => team.id !== id);
-      onSelectedValuesChanged(newValues);
-
-      return newValues;
-    });
+    setSelectedValues((prev) => prev.filter((team) => team.id !== id));
   };
+
+  useEffect(() => {
+    setCurrentValue(values.at(0)?.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(values), setCurrentValue]);
+
+  useEffect(() => {
+    setSelectedValues(initialSelectedValues);
+  }, [JSON.stringify(initialSelectedValues), setSelectedValues]);
+
+  useEffect(() => {
+    onSelectedValuesChanged(selectedValues);
+  }, [JSON.stringify(selectedValues)]);
 
   return {
     currentValue,
-    setCurrentValue,
     selectedValues,
     handleCurrentValueChanged,
     handleValueAdded,

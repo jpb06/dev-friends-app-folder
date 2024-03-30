@@ -1,35 +1,48 @@
 'use client';
 
-import { useState } from 'react';
+import { useQueryState, parseAsArrayOf, parseAsInteger } from 'nuqs';
+import { useEffect } from 'react';
 
 import type { Squad } from '@api';
 import { MultiSelect, type MultiSelectValue } from '@client/molecules';
-import { sortByLabel } from '@logic';
 
-import { useSquadsSearchParams } from './hooks/useSquadsSearchParams';
+import { toMultiSelectValue } from './logic/squad-to-multi-select-value.logic';
 
 type SquadsSelectionProps = {
   squads: Squad[];
 };
 
 export const SquadsSelector = ({ squads }: SquadsSelectionProps) => {
-  const [selectedSquads, setSelectedSquads] = useState(
-    squads.map(({ id }) => id),
+  const [querySquads, setQuerySquads] = useQueryState(
+    'squads',
+    parseAsArrayOf(parseAsInteger, '-')
+      .withDefault(squads.map(({ id }) => id))
+      .withOptions({
+        shallow: false,
+      }),
   );
-  useSquadsSearchParams(selectedSquads);
+  const [, setQueryPage] = useQueryState(
+    'page',
+    parseAsInteger.withOptions({ shallow: false }),
+  );
+
+  useEffect(() => {
+    const squadsIds = squads.map(({ id }) => id);
+    setQuerySquads(querySquads ?? squadsIds);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [JSON.stringify(squads), setQuerySquads]);
 
   const handleSelectedSquadsChanged = (values: MultiSelectValue[]) => {
-    setSelectedSquads(values.map(({ id }) => +id));
+    setQuerySquads(values.map(({ id }) => +id));
+    setQueryPage(1);
   };
-
-  const values = sortByLabel(
-    squads.map(({ id, name }) => ({ id: `${id}`, label: name })),
-  );
 
   return (
     <MultiSelect
-      values={values}
-      initialSelectedValues={values}
+      values={toMultiSelectValue(squads)}
+      initialSelectedValues={toMultiSelectValue(
+        squads.filter(({ id }) => querySquads.includes(id)),
+      )}
       onSelectedValuesChanged={handleSelectedSquadsChanged}
     />
   );

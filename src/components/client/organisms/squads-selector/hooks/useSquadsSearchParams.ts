@@ -7,15 +7,12 @@ export const useSquadsSearchParams = (selectedSquads: number[]) => {
   const router = useRouter();
 
   useEffect(() => {
-    if (selectedSquads.length === 0) {
-      router.replace(pathname);
-      return;
+    if (!searchParams.has('squads')) {
+      const params = new URLSearchParams(searchParams);
+      const sorted = selectedSquads.sort((a, b) => a - b);
+
+      params.set('squads', sorted.join('-'));
+      router.replace(`${pathname}?${params.toString()}`);
     }
-
-    const params = new URLSearchParams(searchParams);
-    const sorted = selectedSquads.sort((a, b) => a - b);
-
-    params.set('squads', sorted.join('-'));
-    router.replace(`${pathname}?${params.toString()}`);
-  }, [router, selectedSquads]);
+  }, [router]);
 };

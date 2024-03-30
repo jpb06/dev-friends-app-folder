@@ -2,6 +2,8 @@
 
 import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
 
+import { Button } from '@client/atoms';
+
 import { useErrorMessage } from './hooks/useErrorMessage';
 
 type ErrorReportProps = {
@@ -27,9 +29,7 @@ export const ErrorReport = ({ error, reset }: ErrorReportProps) => {
         )}
       </div>
       <div className="mt-5 justify-end">
-        <button className="btn btn-error" onClick={() => reset()}>
-          Try again
-        </button>
+        <Button onClick={() => reset()}>Try again</Button>
       </div>
     </div>
   );

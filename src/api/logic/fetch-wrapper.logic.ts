@@ -1,15 +1,11 @@
-import { apiUrl } from '../constants/api-url.constant';
-
 import { throwIfNotOk } from './throw-if-not-ok.logic';
-import { unwrapResult } from './unwrap-result.logic';
+import { unwrapPaginatedResult, unwrapResult } from './unwrap-result.logic';
 
 type Method = 'POST' | 'GET';
 
-export const fetchWrapper = async <TResult>(
-  path: string,
-  method: Method = 'GET',
-  body: unknown = undefined,
-) =>
+const apiUrl = process.env.API_URL ?? 'api-url-not-set';
+
+const fetchWrapper = async (path: string, method: Method, body: unknown) =>
   fetch(`${apiUrl}/${path}`, {
     headers: {
       Accept: 'application/json',
@@ -17,6 +13,16 @@ export const fetchWrapper = async <TResult>(
     },
     method,
     body: body ? JSON.stringify(body) : undefined,
-  })
-    .then(throwIfNotOk)
-    .then(unwrapResult<TResult>);
+  }).then(throwIfNotOk);
+
+export const apiFetch = async <TResult>(
+  path: string,
+  method: Method = 'GET',
+  body: unknown = undefined,
+) => fetchWrapper(path, method, body).then(unwrapResult<TResult>);
+
+export const apiPaginatedFetch = <TResult>(
+  path: string,
+  method: Method = 'GET',
+  body: unknown = undefined,
+) => fetchWrapper(path, method, body).then(unwrapPaginatedResult<TResult>);
