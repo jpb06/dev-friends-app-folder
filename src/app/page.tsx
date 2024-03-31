@@ -28,7 +28,7 @@ const MainPage = async ({ searchParams }: MainPageProps) => {
         }
         key={JSON.stringify({ querySquads, page })}
       >
-        <DevsList />
+        <DevsList squads={squads} />
       </Suspense>
     </>
   );

@@ -27,8 +27,8 @@ const devsBySquads = async (squadsIds: number[], page = 1) => {
   );
 };
 
-const changeDevSquad = async (squadId: string, devId: string) =>
-  apiFetch<string>('devs/change-squad?delayMs=1000', 'POST', {
+const changeDevSquad = async (squadId: number, devId: number) =>
+  apiFetch<string>('devs/change-squad', 'POST', {
     idSquad: squadId,
     idDev: devId,
   });

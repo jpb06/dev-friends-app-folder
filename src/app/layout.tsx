@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
 
-import { Hero, Title } from '@/components/atoms';
+import { Hero, Title } from '@atoms';
+import { Modal } from '@client/molecules';
 
 import './globals.css';
 
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
             {children}
           </main>
         </Hero>
+        <Modal />
       </body>
     </html>
   );
