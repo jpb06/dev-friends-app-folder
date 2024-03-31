@@ -4,8 +4,6 @@ import { useFormState } from 'react-dom';
 
 import type { Dev, Squad } from '@api';
 
-import { CountDownProgress } from '../../../atoms';
-
 import { changeDevSquadAction } from './actions/change-dev-squad.action';
 import { ChangeDevSquad } from './ChangeDevSquad';
 import type { ChangeDevSquadFormState } from './types/change-dev-squad-form-state.type';
@@ -30,7 +28,6 @@ export const ChangeDevSquadForm = ({
   return (
     <form action={formAction} className="flex w-full flex-col">
       <ChangeDevSquad dev={dev} squads={squads} state={state} />
-      <CountDownProgress durationMs={3000} />
     </form>
   );
 };
