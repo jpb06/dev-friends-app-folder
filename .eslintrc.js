@@ -194,7 +194,7 @@ module.exports = {
 
     // Node
     {
-      files: ['.eslintrc.js', 'postcss.config.js', 'remix.config.js'],
+      files: ['.eslintrc.js', 'postcss.config.js'],
       env: {
         node: true,
       },

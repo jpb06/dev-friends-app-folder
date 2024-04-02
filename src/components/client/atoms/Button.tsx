@@ -1,20 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import type { PropsWithChildren } from 'react';
-
-type ButtonProps = {
-  onClick: () => void;
-  disabled?: boolean;
-};
+import type { HTMLProps } from 'react';
 
 export const Button = ({
   onClick,
   disabled,
   children,
-}: PropsWithChildren<ButtonProps>) => (
+  className,
+}: HTMLProps<HTMLButtonElement>) => (
   <motion.button
-    className="btn w-24 cursor-pointer bg-sky-900 disabled:border-slate-900"
+    className={`btn w-24 cursor-pointer bg-sky-900 disabled:border-slate-900 ${className}`}
+    aria-disabled={disabled}
     disabled={disabled}
     onClick={onClick}
     whileHover={{ scale: 1.05 }}

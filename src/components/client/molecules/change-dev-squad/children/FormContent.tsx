@@ -2,22 +2,24 @@
 
 import type { Dev, Squad } from '@api';
 
+import { Button } from '../../../atoms';
 import type { ChangeDevSquadFormState } from '../types/change-dev-squad-form-state.type';
 
-interface FormElementsProps {
+interface FormContentProps {
   dev: Dev;
   squads: Squad[];
   state: ChangeDevSquadFormState;
   pending: boolean;
 }
 
-export const FormElements = ({
+export const FormContent = ({
   dev,
   squads,
   state,
   pending,
-}: FormElementsProps) => (
+}: FormContentProps) => (
   <>
+    <input type="hidden" name="idDev" value={dev.id} />
     <div className="mb-5 flex flex-col gap-[2px]">
       <div className="text-xs text-gray-500">
         {`${dev.firstName} currently belongs to ${squads.find((s) => s.id === dev.idSquad)?.name}`}
@@ -43,8 +45,8 @@ export const FormElements = ({
         {state?.message}
       </div>
     </label>
-    <button type="submit" aria-disabled={pending} className="btn btn-primary">
+    <Button type="submit" disabled={pending} className="w-full">
       Move
-    </button>
+    </Button>
   </>
 );

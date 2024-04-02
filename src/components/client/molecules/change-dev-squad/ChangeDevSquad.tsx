@@ -10,18 +10,15 @@ import type { Dev, Squad } from '@api';
 import { modalAtom } from '../modal/state/modal.atom';
 
 import { changeDevSquadAction } from './actions/change-dev-squad.action';
-import { ChangeDevSquad } from './ChangeDevSquad';
+import { FormStatus } from './children/FormStatus';
 import type { ChangeDevSquadFormState } from './types/change-dev-squad-form-state.type';
 
-interface ChangeDevSquadFormProps {
+interface ChangeDevSquadProps {
   dev: Dev;
   squads: Squad[];
 }
 
-export const ChangeDevSquadForm = ({
-  dev,
-  squads,
-}: ChangeDevSquadFormProps) => {
+export const ChangeDevSquad = ({ dev, squads }: ChangeDevSquadProps) => {
   const setModalState = useSetAtom(modalAtom);
   const [state, formAction] = useFormState<ChangeDevSquadFormState, FormData>(
     changeDevSquadAction,
@@ -45,7 +42,7 @@ export const ChangeDevSquadForm = ({
 
   return (
     <form action={formAction} className="flex w-full flex-col">
-      <ChangeDevSquad dev={dev} squads={squads} state={state} />
+      <FormStatus dev={dev} squads={squads} state={state} />
     </form>
   );
 };

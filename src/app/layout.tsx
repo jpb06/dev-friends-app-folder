@@ -6,8 +6,8 @@ import { ToastContainer } from 'react-toastify';
 import { Hero, Title } from '@atoms';
 import { Modal } from '@client/molecules';
 
-import './globals.css';
 import 'react-toastify/dist/ReactToastify.css';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

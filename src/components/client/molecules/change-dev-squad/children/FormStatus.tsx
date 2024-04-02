@@ -5,21 +5,21 @@ import { useFormStatus } from 'react-dom';
 import type { Squad, Dev } from '@api';
 import { BubbleProgress } from '@atoms';
 
-import { FormElements } from './children/FormElements';
-import type { ChangeDevSquadFormState } from './types/change-dev-squad-form-state.type';
+import type { ChangeDevSquadFormState } from '../types/change-dev-squad-form-state.type';
 
-interface ChangeDevSquadProps {
+import { FormContent } from './FormContent';
+
+interface FormStatusProps {
   dev: Dev;
   squads: Squad[];
   state: ChangeDevSquadFormState;
 }
 
-export const ChangeDevSquad = ({ dev, squads, state }: ChangeDevSquadProps) => {
+export const FormStatus = ({ dev, squads, state }: FormStatusProps) => {
   const { pending } = useFormStatus();
 
   return (
     <>
-      <input type="hidden" name="idDev" value={dev.id} />
       <div className="mb-2 text-sky-500">
         {pending
           ? `Moving ${dev.firstName} to squad ${squads.find((s) => s.id === dev.idSquad)?.name} ...`
@@ -30,7 +30,7 @@ export const ChangeDevSquad = ({ dev, squads, state }: ChangeDevSquadProps) => {
           <BubbleProgress />
         </div>
       ) : (
-        <FormElements
+        <FormContent
           dev={dev}
           squads={squads}
           state={state}

@@ -10,4 +10,14 @@ Toying a bit with react server components and next app folder.
 
 ## ⚡ Components tree
 
-![Components tree](./assets/components-tree.png)
+![Components tree](./docs/assets/components-tree.png)
+
+## ⚡ Guidelines
+
+### 🔶 [General guidelines](./docs/bp-general-guidelines.md)
+
+### 🔶 [Making sure we are understood](./docs/bp-conveyintent-guidelines.md)
+
+### 🔶 [Code guidelines](./docs/bp-code-guidelines.md)
+
+### 🔶 [Frontend guidelines](./docs/bp-frontend-guidelines.md)
