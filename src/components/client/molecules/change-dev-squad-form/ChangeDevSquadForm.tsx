@@ -1,8 +1,13 @@
 'use client';
 
+import { useSetAtom } from 'jotai';
+import { useEffect } from 'react';
 import { useFormState } from 'react-dom';
+import { toast } from 'react-toastify';
 
 import type { Dev, Squad } from '@api';
+
+import { modalAtom } from '../modal/state/modal.atom';
 
 import { changeDevSquadAction } from './actions/change-dev-squad.action';
 import { ChangeDevSquad } from './ChangeDevSquad';
@@ -17,6 +22,7 @@ export const ChangeDevSquadForm = ({
   dev,
   squads,
 }: ChangeDevSquadFormProps) => {
+  const setModalState = useSetAtom(modalAtom);
   const [state, formAction] = useFormState<ChangeDevSquadFormState, FormData>(
     changeDevSquadAction,
     {
@@ -24,6 +30,18 @@ export const ChangeDevSquadForm = ({
       success: false,
     },
   );
+
+  useEffect(() => {
+    if (state.success) {
+      toast.success(state.message);
+      setModalState((prev) => ({
+        ...prev,
+        title: '',
+        modalContent: null,
+        isOpen: false,
+      }));
+    }
+  }, [state.success, state.message, setModalState]);
 
   return (
     <form action={formAction} className="flex w-full flex-col">

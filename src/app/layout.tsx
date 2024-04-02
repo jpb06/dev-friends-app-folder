@@ -1,11 +1,13 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import type { PropsWithChildren } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import { Hero, Title } from '@atoms';
 import { Modal } from '@client/molecules';
 
 import './globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,6 +30,17 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
           </main>
         </Hero>
         <Modal />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
       </body>
     </html>
   );
