@@ -5,7 +5,7 @@ import { useSetAtom } from 'jotai';
 import Image from 'next/image';
 
 import type { Dev, Squad } from '@api';
-import { ChangeDevSquadForm, modalAtom } from '@client/molecules';
+import { ChangeDevSquad, modalAtom } from '@client/molecules';
 
 type DevCardProps = {
   dev: Dev;
@@ -21,7 +21,7 @@ export const DevCard = ({ dev, squads }: DevCardProps) => {
       isOpen: true,
       title: 'Change squad',
       modalContent: (
-        <ChangeDevSquadForm
+        <ChangeDevSquad
           key={`${dev.id}-${squads.map(({ id }) => id)}`}
           dev={dev}
           squads={squads}

@@ -32,7 +32,7 @@ export const Modal = () => {
     >
       <div className="modal-box bg-gradient-to-tr from-sky-950 via-cyan-950 to-slate-800">
         <h3 className="text-lg font-bold text-violet-600">{title}</h3>
-        <div className="py-4">{modalContent}</div>
+        <div className="pt-4">{modalContent}</div>
         <form method="dialog">
           <motion.button
             className="absolute right-[18px] top-[18px]"
