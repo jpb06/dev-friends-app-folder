@@ -30,13 +30,11 @@ jobs:
       - name: 🎭 Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
-      - run: echo ${{ github.event.deployment_status }}
-
       - name: 🎭 Run Playwright tests
         run: pnpm exec playwright test
         env:
           PLAYWRIGHT: true
-          PLAYWRIGHT_WEBSITE_URL: ${{ github.event.deployment_status.environment_url }}
+          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
 
       - name: 💾 Uploading playwright artifacts
         uses: actions/upload-artifact@v4
