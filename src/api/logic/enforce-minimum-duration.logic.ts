@@ -7,6 +7,8 @@ export const enforceMinimumDuration = async <TResult>(
   promise: Promise<TResult>,
   minDuration: number,
 ) => {
+  const isPlaywrightTest = process.env.PLAYWRIGHT === 'true';
+
   const [result] = await Promise.all([promise, delay(minDuration)]);
 
   return result;

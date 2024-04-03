@@ -67,3 +67,50 @@ jobs:
 
       - name: 🔎 Type check
         run: pnpm type-check
+
+  tests:
+    name: 🎯 Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v2.4.0
+        with:
+          version: latest
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'pnpm'
+          cache-dependency-path: ./package.json
+
+      - name: 📥 Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: 🎭 Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
+      - name: ⛛ Waiting for Vercel Preview
+        uses: patrickedqvist/wait-for-vercel-preview@v1.3.1
+        id: waitForVercelPreview
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          max_timeout: 60
+
+      - name: ⚙️ Set PLAYWRIGHT_WEBSITE_URL
+        run: |
+          echo "PLAYWRIGHT=true" >> $GITHUB_ENV
+          echo "PLAYWRIGHT_WEBSITE_URL=${{steps.waitForVercelPreview.outputs.url}}" >> $GITHUB_ENV
+
+      - name: 🎭 Run Playwright tests
+        run: pnpm exec playwright test
+
+      - uses: 💾 actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

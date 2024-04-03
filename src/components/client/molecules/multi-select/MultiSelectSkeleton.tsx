@@ -1,5 +1,8 @@
 export const MultiSelectSkeleton = () => (
-  <div className="form-control w-full rounded-lg border border-slate-900 bg-gradient-to-bl from-sky-950 via-cyan-950 to-slate-800 p-2">
+  <div
+    data-testid="multi-select-skeleton"
+    className="form-control w-full rounded-lg border border-slate-900 bg-gradient-to-bl from-sky-950 via-cyan-950 to-slate-800 p-2"
+  >
     <div className="label flex flex-wrap justify-normal gap-2">
       <div className="skeleton h-10 w-20 shrink-0 rounded-xl" />
       <div className="skeleton h-10 w-36 shrink-0 rounded-xl" />

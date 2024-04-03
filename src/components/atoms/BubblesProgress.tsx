@@ -1,3 +1,3 @@
 export const BubbleProgress = () => (
-  <span className="loading loading-dots loading-lg" />
+  <span role="progressbar" className="loading loading-dots loading-lg" />
 );
