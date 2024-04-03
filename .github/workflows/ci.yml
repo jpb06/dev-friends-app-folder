@@ -108,7 +108,8 @@ jobs:
       - name: 🎭 Run Playwright tests
         run: pnpm exec playwright test
 
-      - uses: 💾 actions/upload-artifact@v4
+      - name: 💾 Uploading playwright artifacts
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: playwright-report
