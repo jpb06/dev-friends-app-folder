@@ -35,6 +35,7 @@ jobs:
         env:
           PLAYWRIGHT: true
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          API_URL: https://devfriends-backend.fly.dev
 
       - name: 💾 Uploading playwright artifacts
         uses: actions/upload-artifact@v4
