@@ -98,9 +98,9 @@ jobs:
         id: waitForVercelPreview
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 60
+          max_timeout: 240
 
-      - name: ⚙️ Set PLAYWRIGHT_WEBSITE_URL
+      - name: ⚙️ Set tests related env variables
         run: |
           echo "PLAYWRIGHT=true" >> $GITHUB_ENV
           echo "PLAYWRIGHT_WEBSITE_URL=${{steps.waitForVercelPreview.outputs.url}}" >> $GITHUB_ENV
