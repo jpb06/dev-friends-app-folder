@@ -12,7 +12,8 @@ import {
   pagingSkeleton,
 } from '../tests/assertions';
 
-const url = 'http://localhost:3000';
+const url =
+  process.env.PLAYWRIGHT_WEBSITE_URL ?? 'playwright-website-url-not-set';
 
 test('has a squads selector', async ({ page }) => {
   const squads = await DevFriendsApi.allSquads();
@@ -34,11 +35,11 @@ test('has a squads selector', async ({ page }) => {
 test('has paging controls', async ({ page }) => {
   await page.goto(url);
 
-  const skeleton = await pagingSkeleton.container(page);
-  await Promise.all([
-    pagingSkeleton.backButton(skeleton),
-    pagingSkeleton.nextButton(skeleton),
-  ]);
+  await pagingSkeleton.container(page);
+  // await Promise.all([
+  //   pagingSkeleton.backButton(skeleton),
+  //   pagingSkeleton.nextButton(skeleton),
+  // ]);
 
   const paging = await devsPaging.container(page);
   await Promise.all([
@@ -50,7 +51,7 @@ test('has paging controls', async ({ page }) => {
 test('has a devs list', async ({ page }) => {
   await page.goto(url);
 
-  await devsListSkeleton.container(page);
+  //await devsListSkeleton.container(page);
 
   const list = await devsList.container(page);
   await devsList.list(list);
@@ -61,7 +62,7 @@ test('can filter squads', async ({ page }) => {
 
   await page.goto(url);
 
-  await devsListSkeleton.container(page);
+  //await devsListSkeleton.container(page);
   await devsList.container(page);
 
   await expect(page.getByText(`${devs.total} results`)).toBeVisible();

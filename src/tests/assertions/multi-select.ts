@@ -24,14 +24,16 @@ const findCombobox = async (multiSelect: Locator) => {
 };
 
 const findItems = async (multiSelect: Locator, items: RegExp[]) => {
-  const divs = multiSelect.locator('div');
+  const badges = await multiSelect.getByTestId('badge').all();
+  expect(badges).toHaveLength(4);
+  for (const badge of badges) {
+    const text = await badge.textContent();
 
-  items
-    .map((regex) => divs.filter({ hasText: regex }))
-    .map(async (div) => {
-      await expect(div).toBeVisible();
-      await expect(div.locator('svg')).toBeVisible();
-    });
+    const result = items.some(
+      (regex) => text !== undefined && text?.match(regex),
+    );
+    expect(result).toBe(true);
+  }
 };
 
 export const multiSelect = {
