@@ -30,6 +30,8 @@ jobs:
       - name: 🎭 Install Playwright Browsers
         run: pnpm exec playwright install --with-deps
 
+      - run: echo ${{ github.event.deployment_status }}
+
       - name: 🎭 Run Playwright tests
         run: pnpm exec playwright test
         env:
