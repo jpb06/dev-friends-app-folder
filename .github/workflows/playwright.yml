@@ -27,10 +27,10 @@ jobs:
       - name: 📥 Install deps
         run: pnpm install --frozen-lockfile
 
-      - name: 🎭 Install Playwright dependencies
+      - name: 🎭 Install Playwright
         run: pnpm exec playwright install
 
-      - name: 🎭 Install Playwright
+      - name: 🎭 Install Playwright dependencies
         run: pnpm exec playwright install-deps
 
       - name: 🎭 Run Playwright tests
