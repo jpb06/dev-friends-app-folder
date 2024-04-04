@@ -27,11 +27,8 @@ jobs:
       - name: 📥 Install deps
         run: pnpm install --frozen-lockfile
 
-      - name: 🎭 Install Playwright
-        run: pnpx playwright install --with-deps
-
       - name: 🎭 Run Playwright tests
-        run: pnpx playwright test
+        run: pnpm exec playwright test
         env:
           PLAYWRIGHT: true
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
