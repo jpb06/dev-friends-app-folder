@@ -12,13 +12,10 @@ import {
   pagingSkeleton,
 } from '../tests/assertions';
 
-const url =
-  process.env.PLAYWRIGHT_WEBSITE_URL ?? 'playwright-website-url-not-set';
-
 test('has a squads selector', async ({ page }) => {
   const squads = await DevFriendsApi.allSquads();
 
-  await page.goto(url);
+  await page.goto('/');
 
   const select = await multiSelect.container(page);
 
@@ -33,7 +30,7 @@ test('has a squads selector', async ({ page }) => {
 });
 
 test('has paging controls', async ({ page }) => {
-  await page.goto(url);
+  await page.goto('/');
 
   await pagingSkeleton.container(page);
   // await Promise.all([
@@ -49,7 +46,7 @@ test('has paging controls', async ({ page }) => {
 });
 
 test('has a devs list', async ({ page }) => {
-  await page.goto(url);
+  await page.goto('/');
 
   //await devsListSkeleton.container(page);
 
@@ -60,7 +57,7 @@ test('has a devs list', async ({ page }) => {
 test('can filter squads', async ({ page }) => {
   const [devs, squads] = await Promise.all([fetchAllDevs(), fetchAllSquads()]);
 
-  await page.goto(url);
+  await page.goto('/');
 
   //await devsListSkeleton.container(page);
   await devsList.container(page);
@@ -92,7 +89,7 @@ test('can filter squads', async ({ page }) => {
 });
 
 test('can change the squad of a dev', async ({ page }) => {
-  await page.goto(url);
+  await page.goto('/');
 
   const squads = await fetchAllSquads();
 
