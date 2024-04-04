@@ -13,7 +13,7 @@ dependencies:
     version: 11.0.24(react-dom@18.2.0)(react@18.2.0)
   jotai:
     specifier: ^2.7.2
-    version: 2.7.2(@types/react@18.2.73)(react@18.2.0)
+    version: 2.7.2(@types/react@18.2.74)(react@18.2.0)
   next:
     specifier: ^14.1.4
     version: 14.1.4(react-dom@18.2.0)(react@18.2.0)
@@ -37,6 +37,9 @@ devDependencies:
   '@next/eslint-plugin-next':
     specifier: ^14.1.4
     version: 14.1.4
+  '@playwright/test':
+    specifier: ^1.42.1
+    version: 1.42.1
   '@stylistic/eslint-plugin':
     specifier: ^1.7.0
     version: 1.7.0(eslint@8.57.0)(typescript@5.4.3)
@@ -47,8 +50,8 @@ devDependencies:
     specifier: ^20.12.2
     version: 20.12.2
   '@types/react':
-    specifier: ^18.2.73
-    version: 18.2.73
+    specifier: ^18.2.74
+    version: 18.2.74
   '@types/react-dom':
     specifier: ^18.2.23
     version: 18.2.23
@@ -64,6 +67,9 @@ devDependencies:
   daisyui:
     specifier: ^4.9.0
     version: 4.9.0(postcss@8.4.38)
+  dotenv:
+    specifier: ^16.4.5
+    version: 16.4.5
   eslint:
     specifier: ^8
     version: 8.57.0
@@ -354,6 +360,14 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
+  /@playwright/test@1.42.1:
+    resolution: {integrity: sha512-Gq9rmS54mjBL/7/MvBaNOBwbfnh7beHvS6oS4srqXFcQHpQCV1+c8JXWE8VLPyRDhgS3H8x8A7hztqI9VnwrAQ==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright: 1.42.1
+    dev: true
+
   /@rushstack/eslint-patch@1.10.1:
     resolution: {integrity: sha512-S3Kq8e7LqxkA9s7HKLqXGTGck1uwis5vAXan3FnU5yw1Ec5hsSGnq4s/UCaSqABPOnOTg7zASLyst7+ohgWexg==}
     dev: true
@@ -473,11 +487,11 @@ packages:
   /@types/react-dom@18.2.23:
     resolution: {integrity: sha512-ZQ71wgGOTmDYpnav2knkjr3qXdAFu0vsk8Ci5w3pGAIdj7/kKAyn+VsQDhXsmzzzepAiI9leWMmubXz690AI/A==}
     dependencies:
-      '@types/react': 18.2.73
+      '@types/react': 18.2.74
     dev: true
 
-  /@types/react@18.2.73:
-    resolution: {integrity: sha512-XcGdod0Jjv84HOC7N5ziY3x+qL0AfmubvKOZ9hJjJ2yd5EE+KYjWhdOjt387e9HPheHkdggF9atTifMRtyAaRA==}
+  /@types/react@18.2.74:
+    resolution: {integrity: sha512-9AEqNZZyBx8OdZpxzQlaFEVCSFUM2YXJH46yPOiOpm078k6ZLOCcuAzGum/zK8YBwY+dbahVNbHrbgrAwIRlqw==}
     dependencies:
       '@types/prop-types': 15.7.12
       csstype: 3.1.3
@@ -1216,6 +1230,11 @@ packages:
       esutils: 2.0.3
     dev: true
 
+  /dotenv@16.4.5:
+    resolution: {integrity: sha512-ZmdL2rui+eB2YwhsWzjInR8LldtZHGDoQ1ugH85ppHKwpUHL7j7rN0Ti9NCnGiQbhaZ11FpR+7ao1dNsmduNUg==}
+    engines: {node: '>=12'}
+    dev: true
+
   /eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
@@ -1924,6 +1943,14 @@ packages:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
     dev: true
 
+  /fsevents@2.3.2:
+    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+    requiresBuild: true
+    dev: true
+    optional: true
+
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -2375,7 +2402,7 @@ packages:
     hasBin: true
     dev: true
 
-  /jotai@2.7.2(@types/react@18.2.73)(react@18.2.0):
+  /jotai@2.7.2(@types/react@18.2.74)(react@18.2.0):
     resolution: {integrity: sha512-6Ft5kpNu8p93Ssf1Faoza3hYQZRIYp7rioK8MwTTFnbQKwUyZElwquPwl1h6U0uo9hC0jr+ghO3gcSjc6P35/Q==}
     engines: {node: '>=12.20.0'}
     peerDependencies:
@@ -2387,7 +2414,7 @@ packages:
       react:
         optional: true
     dependencies:
-      '@types/react': 18.2.73
+      '@types/react': 18.2.74
       react: 18.2.0
     dev: false
 
@@ -2842,6 +2869,22 @@ packages:
   /pirates@4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
+    dev: true
+
+  /playwright-core@1.42.1:
+    resolution: {integrity: sha512-mxz6zclokgrke9p1vtdy/COWBH+eOZgYUVVU34C73M+4j4HLlQJHtfcqiqqxpP0o8HhMkflvfbquLX5dg6wlfA==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
+
+  /playwright@1.42.1:
+    resolution: {integrity: sha512-PgwB03s2DZBcNRoW+1w9E+VkLBxweib6KTXM0M3tkiT4jVxKSi6PmVJ591J+0u10LUrgxB7dLRbiJqO5s2QPMg==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dependencies:
+      playwright-core: 1.42.1
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: true
 
   /possible-typed-array-names@1.0.0:

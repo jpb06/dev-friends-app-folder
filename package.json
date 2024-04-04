@@ -8,7 +8,10 @@
     "start": "next start",
     "type-check": "pnpm tsc --noEmit --incremental false",
     "lint": "next lint",
-    "sync-icons": "pnpm generateReadmeIcons -h 50"
+    "sync-icons": "pnpm generateReadmeIcons -h 50",
+    "test": "pnpm playwright test",
+    "test-ui": "pnpm playwright test --ui",
+    "test-report": "pnpm exec playwright show-report"
   },
   "dependencies": {
     "@heroicons/react": "^2.1.3",
@@ -23,15 +26,17 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.1.4",
+    "@playwright/test": "^1.42.1",
     "@stylistic/eslint-plugin": "^1.7.0",
     "@types/eslint": "^8.56.7",
     "@types/node": "^20.12.2",
-    "@types/react": "^18.2.73",
+    "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.23",
     "@typescript-eslint/eslint-plugin": "^7.5.0",
     "@typescript-eslint/parser": "^7.5.0",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.9.0",
+    "dotenv": "^16.4.5",
     "eslint": "^8",
     "eslint-config-next": "14.1.4",
     "eslint-config-prettier": "^9.1.0",
