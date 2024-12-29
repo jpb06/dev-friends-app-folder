@@ -2,12 +2,12 @@ import { apiFetch, apiPaginatedFetch } from './logic/fetch-wrapper.logic';
 import type { Dev, Squad } from './types/dev-friends-api.types';
 import type { Pagination } from './types/pagination.type';
 
-const allSquads = async () => apiFetch<Squad[]>('squads?delayMs=2000');
+const allSquads = async () => apiFetch<Squad[]>('squads?delayMs=100');
 
-const allDevs = async () => apiPaginatedFetch<Dev[]>('devs?delayMs=1000');
+const allDevs = async () => apiPaginatedFetch<Dev[]>('devs?delayMs=100');
 
 const squadDevs = async (squadId: string) =>
-  apiPaginatedFetch<Dev[]>(`squads/${squadId}/devs?delayMs=1000`);
+  apiPaginatedFetch<Dev[]>(`squads/${squadId}/devs?delayMs=100`);
 
 const devsBySquads = (squadsIds: number[], page = 1) => {
   if (squadsIds.length === 0) {
@@ -22,7 +22,7 @@ const devsBySquads = (squadsIds: number[], page = 1) => {
     squadsIds.length === 1 && squadsIds[0] === -1 ? [1, 2, 3, 4] : squadsIds;
 
   return apiPaginatedFetch<Dev[]>(
-    `devs/by-squads?delayMs=1000&page=${page}`,
+    `devs/by-squads?delayMs=100&page=${page}`,
     'POST',
     {
       idSquads,
