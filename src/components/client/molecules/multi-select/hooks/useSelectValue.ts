@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 
 import { sortByLabel } from '@logic';
 
-import { MultiSelectValue } from '../MultiSelect';
+import type { MultiSelectValue } from '../MultiSelect';
 
 export const useSelectValue = (
   values: MultiSelectValue[],
@@ -12,9 +12,7 @@ export const useSelectValue = (
   const [currentValue, setCurrentValue] = useState<string | undefined>();
   const [selectedValues, setSelectedValues] = useState<MultiSelectValue[]>([]);
 
-  const handleCurrentValueChanged = (
-    e: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
+  const handleCurrentValueChanged = (e: ChangeEvent<HTMLSelectElement>) => {
     setCurrentValue(e.target.value);
   };
 
@@ -34,15 +32,17 @@ export const useSelectValue = (
     setSelectedValues((prev) => prev.filter((team) => team.id !== id));
   };
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     setCurrentValue(values.at(0)?.id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(values), setCurrentValue]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     setSelectedValues(initialSelectedValues);
   }, [JSON.stringify(initialSelectedValues), setSelectedValues]);
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     onSelectedValuesChanged(selectedValues);
   }, [JSON.stringify(selectedValues)]);

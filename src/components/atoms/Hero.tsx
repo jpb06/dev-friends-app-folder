@@ -11,7 +11,7 @@ export const Hero = ({ children }: PropsWithChildren) => (
           width={800}
           height={292}
           className="rounded-t-2xl"
-          priority
+          priority={true}
         />
         <div className="px-2 py-5">{children}</div>
       </div>

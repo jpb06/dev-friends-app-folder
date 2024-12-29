@@ -28,7 +28,7 @@ export const FormContent = ({
     </div>
     <label className="form-control mb-3 w-full">
       <select name="idSquad" className="select select-bordered">
-        <option disabled defaultChecked>
+        <option disabled={true} defaultChecked={true}>
           Select another squad
         </option>
         {squads

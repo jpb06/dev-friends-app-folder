@@ -11,6 +11,7 @@ export const useErrorMessage = (error: Error) => {
 
     return error.message;
   } catch (e) {
+    console.error(e);
     return error.message;
   }
 };

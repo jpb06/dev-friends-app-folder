@@ -5,16 +5,17 @@ import { DevsListPagingSkeleton } from '@client/molecules';
 import { SquadsSelector } from '@client/organisms';
 import { DevsList, DevsListSkeleton } from '@server/organisms';
 
+import type { SearchParams } from 'nuqs';
 import { searchParamsCache } from '../logic';
-import type { SearchParams } from '../types/search-params.type';
 
 type MainPageProps = {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 };
 
 const MainPage = async ({ searchParams }: MainPageProps) => {
   const squads = await DevFriendsApi.allSquads();
-  const { squads: querySquads, page } = searchParamsCache.parse(searchParams);
+  const { squads: querySquads, page } =
+    await searchParamsCache.parse(searchParams);
 
   return (
     <>
@@ -33,4 +34,6 @@ const MainPage = async ({ searchParams }: MainPageProps) => {
     </>
   );
 };
+
+// biome-ignore lint/style/noDefaultExport: next
 export default MainPage;

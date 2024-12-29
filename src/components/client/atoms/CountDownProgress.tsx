@@ -23,7 +23,7 @@ export const CountDownProgress = ({ durationMs }: CountDownProgressProps) => {
     return () => {
       clearInterval(interval);
     };
-  }, [setProgress, durationInSeconds]);
+  }, [durationInSeconds]);
 
   return (
     <progress className="progress progress-info" value={progress} max="100" />
