@@ -1,3 +1,4 @@
+import { Provider } from 'jotai';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
@@ -23,24 +24,26 @@ const RootLayout = ({ children }: Readonly<PropsWithChildren>) => (
       <meta name="darkreader-lock" />
     </head>
     <body className={inter.className}>
-      <Hero>
-        <main className="flex flex-col items-center justify-between">
-          <Title>My dev friends</Title>
-          <NuqsAdapter>{children}</NuqsAdapter>
-        </main>
-      </Hero>
-      <Modal />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={true}
-        pauseOnFocusLoss={true}
-        draggable={true}
-        pauseOnHover={true}
-        theme="dark"
-      />
+      <Provider>
+        <Hero>
+          <main className="flex flex-col items-center justify-between">
+            <Title>My dev friends</Title>
+            <NuqsAdapter>{children}</NuqsAdapter>
+          </main>
+        </Hero>
+        <Modal />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={true}
+          pauseOnFocusLoss={true}
+          draggable={true}
+          pauseOnHover={true}
+          theme="dark"
+        />
+      </Provider>
     </body>
   </html>
 );
