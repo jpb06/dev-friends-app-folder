@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
 import { DevFriendsApi } from '../../../../../api';
+import type { ChangeDevSquadFormState } from '../types/change-dev-squad-form-state.type';
 
 interface ActionResult {
   message: string;
@@ -11,9 +12,7 @@ interface ActionResult {
 }
 
 export const changeDevSquadAction = async (
-  prevState: {
-    message: string;
-  },
+  _prevState: ChangeDevSquadFormState,
   formData: FormData,
 ): Promise<ActionResult> => {
   const schema = z.object({
