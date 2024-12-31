@@ -3,7 +3,7 @@ import { apiFetch, apiPaginatedFetch } from './logic/fetch-wrapper.logic';
 import type { Dev, Squad } from './types/dev-friends-api.types';
 import type { Pagination } from './types/pagination.type';
 
-const minDuration = 500;
+const minDuration = 300;
 
 const allSquads = async () => {
   const promise = apiFetch<Squad[]>('squads');
