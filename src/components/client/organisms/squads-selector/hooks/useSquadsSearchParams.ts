@@ -14,5 +14,5 @@ export const useSquadsSearchParams = (selectedSquads: number[]) => {
       params.set('squads', sorted.join('-'));
       router.replace(`${pathname}?${params.toString()}`);
     }
-  }, [router]);
+  }, [router, pathname, searchParams, selectedSquads]);
 };

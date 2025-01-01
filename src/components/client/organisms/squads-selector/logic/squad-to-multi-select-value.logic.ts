@@ -1,4 +1,4 @@
-import { Squad } from '@api';
+import type { Squad } from '@api';
 
 export const toMultiSelectValue = (squads: Squad[]) =>
   squads.map(({ id, name }) => ({

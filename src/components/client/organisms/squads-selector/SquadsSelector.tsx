@@ -1,6 +1,6 @@
 'use client';
 
-import { useQueryState, parseAsArrayOf, parseAsInteger } from 'nuqs';
+import { parseAsArrayOf, parseAsInteger, useQueryState } from 'nuqs';
 import { useEffect } from 'react';
 
 import type { Squad } from '@api';
@@ -26,10 +26,10 @@ export const SquadsSelector = ({ squads }: SquadsSelectionProps) => {
     parseAsInteger.withOptions({ shallow: false }),
   );
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
     const squadsIds = squads.map(({ id }) => id);
     setQuerySquads(querySquads ?? squadsIds);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [JSON.stringify(squads), setQuerySquads]);
 
   const handleSelectedSquadsChanged = (values: MultiSelectValue[]) => {

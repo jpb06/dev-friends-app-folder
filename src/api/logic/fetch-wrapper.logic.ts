@@ -5,15 +5,23 @@ type Method = 'POST' | 'GET';
 
 const apiUrl = process.env.API_URL ?? 'api-url-not-set';
 
-const fetchWrapper = async (path: string, method: Method, body: unknown) =>
-  fetch(`${apiUrl}/${path}`, {
+const fetchWrapper = async (path: string, method: Method, body: unknown) => {
+  console.info(`📡 Calling API: ${method} /${path}`);
+  if (body) {
+    console.info(`Body: ${JSON.stringify(body)}`);
+  }
+
+  const result = await fetch(`${apiUrl}/${path}`, {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     method,
     body: body ? JSON.stringify(body) : undefined,
-  }).then(throwIfNotOk);
+  });
+
+  return await throwIfNotOk(result);
+};
 
 export const apiFetch = async <TResult>(
   path: string,

@@ -1,11 +1,11 @@
 {
-  "eslint.run": "onSave",
+  "biome.enabled": true,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": "explicit"
+    "source.organizeImports.biome": "explicit"
   },
   "editor.tabSize": 2,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "biomejs.biome",
   "[shellscript]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
@@ -29,6 +29,7 @@
   "scss.validate": false,
   "stylelint.validate": ["css", "scss"],
   "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
   "[properties]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },

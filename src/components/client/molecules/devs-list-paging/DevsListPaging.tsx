@@ -1,6 +1,6 @@
 'use client';
 
-import { useQueryState, parseAsInteger } from 'nuqs';
+import { parseAsInteger, useQueryState } from 'nuqs';
 
 import type { Pagination } from '@api';
 import { Button } from '@client/atoms';

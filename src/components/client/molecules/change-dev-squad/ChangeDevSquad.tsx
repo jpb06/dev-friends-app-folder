@@ -1,8 +1,7 @@
 'use client';
 
 import { useSetAtom } from 'jotai';
-import { useEffect } from 'react';
-import { useFormState } from 'react-dom';
+import { useActionState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
 import type { Dev, Squad } from '@api';
@@ -20,7 +19,7 @@ interface ChangeDevSquadProps {
 
 export const ChangeDevSquad = ({ dev, squads }: ChangeDevSquadProps) => {
   const setModalState = useSetAtom(modalAtom);
-  const [state, formAction] = useFormState<ChangeDevSquadFormState, FormData>(
+  const [state, formAction] = useActionState<ChangeDevSquadFormState, FormData>(
     changeDevSquadAction,
     {
       message: '',

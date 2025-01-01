@@ -42,7 +42,7 @@ export const DevCard = ({ dev, squads }: DevCardProps) => {
         <Image
           src={dev.avatar}
           alt={dev.firstName}
-          fill
+          fill={true}
           className="rounded-t-lg object-cover"
           sizes="(max-width: &100px) 100vw"
         />
