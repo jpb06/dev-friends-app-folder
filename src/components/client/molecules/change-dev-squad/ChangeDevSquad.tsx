@@ -40,7 +40,11 @@ export const ChangeDevSquad = ({ dev, squads }: ChangeDevSquadProps) => {
   }, [state.success, state.message, setModalState]);
 
   return (
-    <form action={formAction} className="flex w-full flex-col">
+    <form
+      data-testid="change-dev-squad-form"
+      action={formAction}
+      className="flex w-full flex-col"
+    >
       <FormStatus dev={dev} squads={squads} state={state} />
     </form>
   );

@@ -9,8 +9,12 @@ type BadgeProps = {
 };
 
 export const Badge = ({ onClick, children }: PropsWithChildren<BadgeProps>) => (
-  <div className="badge badge-ghost h-10 gap-1 rounded-xl text-slate-500 hover:text-slate-300">
+  <div
+    data-testid="badge"
+    className="badge badge-ghost h-10 gap-1 rounded-xl text-slate-500 hover:text-slate-300"
+  >
     <motion.div
+      data-testid="close-badge"
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
