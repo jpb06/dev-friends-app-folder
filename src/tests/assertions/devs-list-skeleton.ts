@@ -1,4 +1,4 @@
-import { expect, Page } from '@playwright/test';
+import { type Page, expect } from '@playwright/test';
 
 const findContainer = async (page: Page) => {
   const skeleton = page.getByTestId('devs-list-skeleton');

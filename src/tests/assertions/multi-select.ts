@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 const findContainer = async (page: Page) => {
   const container = page.getByTestId('multi-select');
@@ -29,9 +29,7 @@ const findItems = async (multiSelect: Locator, items: RegExp[]) => {
   for (const badge of badges) {
     const text = await badge.textContent();
 
-    const result = items.some(
-      (regex) => text !== undefined && text?.match(regex),
-    );
+    const result = items.some((regex) => text?.match(regex));
     expect(result).toBe(true);
   }
 };

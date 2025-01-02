@@ -6,6 +6,8 @@ dotenv.config();
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
+
+// biome-ignore lint/style/noDefaultExport: playwright
 export default defineConfig({
   testDir: './src',
   /* Run tests in files in parallel */

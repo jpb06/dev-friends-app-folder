@@ -1,7 +1,8 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 const findContainer = async (page: Page) => {
   const skeleton = page.getByTestId('devs-paging-skeleton');
+  console.info('skeleton', skeleton);
   await expect(skeleton).toBeVisible();
 
   return skeleton;

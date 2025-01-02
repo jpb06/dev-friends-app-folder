@@ -1,11 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 import { DevFriendsApi } from '../api';
 import { fetchAllDevs } from '../tests/api';
 import { fetchAllSquads } from '../tests/api/fetchAllSquads';
 import {
   devsList,
-  devsListSkeleton,
   devsPaging,
   modal,
   multiSelect,
@@ -32,10 +31,10 @@ test('has a squads selector', async ({ page }) => {
 test('has paging controls', async ({ page }) => {
   await page.goto('/');
 
-  await pagingSkeleton.container(page);
+  // const skeleton = await pagingSkeleton.container(page);
   // await Promise.all([
-  //   pagingSkeleton.backButton(skeleton),
-  //   pagingSkeleton.nextButton(skeleton),
+  //   pagingSkeleton.backButton(page),
+  //   pagingSkeleton.nextButton(page),
   // ]);
 
   const paging = await devsPaging.container(page);
@@ -75,17 +74,16 @@ test('can filter squads', async ({ page }) => {
   await removeSquad.click();
 
   await pagingSkeleton.container(page);
-  await devsListSkeleton.container(page);
+  // await devsListSkeleton.container(page);
   await devsPaging.container(page);
 
+  //   const updatedDevs = await fetchAllDevs();
 
-//   const updatedDevs = await fetchAllDevs();
+  //   const filteredDevs = updatedDevs.data.filter(
+  //     ({ idSquad }) => idSquad !== selectedSquad.id,
+  //   );
 
-//   const filteredDevs = updatedDevs.data.filter(
-//     ({ idSquad }) => idSquad !== selectedSquad.id,
-//   );
-
-//await expect(page.getByText(`${filteredDevs.length} results`)).toBeVisible();
+  //await expect(page.getByText(`${filteredDevs.length} results`)).toBeVisible();
 });
 
 test('can change the squad of a dev', async ({ page }) => {

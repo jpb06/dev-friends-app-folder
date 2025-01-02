@@ -1,4 +1,4 @@
-import { expect, Locator, Page } from '@playwright/test';
+import { expect, type Locator, type Page } from '@playwright/test';
 
 const findContainer = async (page: Page) => {
   const pagingContainer = page.getByTestId('devs-paging');

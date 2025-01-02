@@ -11,6 +11,9 @@
     "format-ci": "biome format ./src",
     "lint": "biome lint ./src",
     "lint-fix": "biome lint --write ./src",
+    "test": "pnpm playwright test",
+    "test-ui": "pnpm playwright test --ui",
+    "test-report": "pnpm exec playwright show-report",
     "sync-icons": "pnpm generateReadmeIcons -h 50"
   },
   "dependencies": {
@@ -26,11 +29,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node": "22.10.2",
+    "@playwright/test": "^1.49.1",
+    "@types/node": "22.10.3",
     "@types/react": "19.0.2",
     "@types/react-dom": "19.0.2",
     "autoprefixer": "10.4.20",
     "daisyui": "4.12.23",
+    "dotenv": "^16.4.7",
     "postcss": "8.4.49",
     "readme-package-icons": "1.1.16",
     "tailwindcss": "3.4.17",
