@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -10,7 +14,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -18,19 +22,47 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@api": ["./src/api"],
-      "@logic": ["./src/logic"],
-      "@atoms": ["./src/components/atoms"],
-      "@client/atoms": ["./src/components/client/atoms"],
-      "@client/molecules": ["./src/components/client/molecules"],
-      "@client/organisms": ["./src/components/client/organisms"],
-      "@client/templates": ["./src/components/client/templates"],
-      "@server/organisms": ["./src/components/server/organisms"],
-      "@types": ["./src/types"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@api": [
+        "./src/api"
+      ],
+      "@logic": [
+        "./src/logic"
+      ],
+      "@atoms": [
+        "./src/components/atoms"
+      ],
+      "@client/atoms": [
+        "./src/components/client/atoms"
+      ],
+      "@client/molecules": [
+        "./src/components/client/molecules"
+      ],
+      "@client/organisms": [
+        "./src/components/client/organisms"
+      ],
+      "@client/templates": [
+        "./src/components/client/templates"
+      ],
+      "@server/organisms": [
+        "./src/components/server/organisms"
+      ],
+      "@types": [
+        "./src/types"
+      ]
     },
     "target": "ES2017"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
